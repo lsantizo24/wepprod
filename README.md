@@ -51,6 +51,8 @@ iniciar el proyecto:
 Nota: para eso debes asegurar que tu contenedor de postgresQL se este ejecutando.
 
 usar el comando: python manage.py runserver
+-------------------------------
+adjunto el link https://drive.google.com/drive/folders/1AvlXbsZ9J1_4KO-CCSQ-WTgqnKTzTHwd?usp=sharing
 
 
 de esta forma el proyecto se estará ejecutando, abre el proyecto en el localhost:8000 y visualiza el proyecto.
