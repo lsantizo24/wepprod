@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>production counter </title>
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'styles.css' %}"> 
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1></h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="pass-fail-container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h2 class="text-uppercase">Line: {{ station_name }}</h2>
+                                <h2 class="text-uppercase">order: {{ order_number  }}</h2>
+                                <h2 class="text-uppercase">lot Number: {{ lot_number }}</h2>
+                            </div>
+                            <div class="col-md-6 ">
+                                <h1 class="pass">Total production: <span id="new-pieces">{{ new_pieces }}</span></h1>
+                                <h1 class="fail">Fail: <span id="non_passed_count">{{ non_passed_count }}</span></h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+           <div class="container">
+            <div class="row">
+                <div class="col-md-10 text-center">
+                    <h3>Production counter by hour</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-11">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            {% if data %}
+                                {{ data | safe }}
+                            {% else %}
+                                <tr>
+                                    <td colspan="6" class="text-center">No data available for the current timeframe.</td>
+                                </tr>
+                            {% endif %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+
+        <!-- Agrega esta sección para mostrar los datos dinámicamente -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Incluye jQuery para AJAX -->
+        <script>
+            $(document).ready(function() {
+                function updateData() {
+                    $.ajax({
+                        url: "{% url 'production_counter' %}",
+                        type: "GET",
+                        dataType: "json",
+                        success: function(response) {
+                            $('#data').html(response.data);
+                            $('#new-pieces').text(response.new_pieces);
+                            $('#non_passed_count').text(response.non_passed_count)
+                        },
+                        error: function(xhr, errmsg, err) {
+                            console.log(xhr.status + ": " + xhr.responseText);
+                        }
+                    });
+                }
+
+                // Actualiza la información cada segundo
+                setInterval(updateData, 1000);
+            });
+        </script>
+
+        
+        
+    </body>
+</html>

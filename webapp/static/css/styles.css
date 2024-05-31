@@ -1,0 +1,64 @@
+.close-btn {
+    text-transform: none;
+    background-color: #e5cccc;
+    /* border-color: #e5d4d4c7; */
+    border: #d97d7d7d solid 1px;
+    width: 50px;
+    height: 25px;
+    border-radius: 6px;
+}
+
+.gg-close {
+    color: #e99292;
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    transform: scale(var(--ggs, 1));
+    width: 22px;
+    height: 22px;
+    border: 2px solid transparent;
+    border-radius: 40px;
+    transition: color 0.3s ease-out;
+}
+
+.close-btn:hover > .gg-close{
+    color: #e35b5b;
+    /* transition: color 0.5s ease; */
+    transition: color 0.3s ease;
+}
+
+.gg-close::after,
+.gg-close::before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    width: 16px;
+    height: 2px;
+    background: currentColor;
+    transform: rotate(45deg);
+    border-radius: 5px;
+    top: 8px;
+    left: 1px
+}
+
+.gg-close::after {
+    transform: rotate(-45deg)
+}
+
+.pass-fail-container {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+.pass {
+    color: green;
+    font-size: 35px;
+    font-weight: bold;
+}
+.fail {
+    color: red;
+    font-size: 35px;
+    font-weight: bold;
+}

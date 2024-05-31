@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>inicio de sesion</title>
+        <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet" >
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body style="background-color: #00aeff;"> <!-- Cambia el color de fondo a azul -->
+       
+        <main>
+          <div class="container py-4 d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+            <div class="p-5 mb-4 bg-light rounded-3">
+              <div class="container-fluid py-5">
+                <h1 class="display-5 fw-bold text-center">Control</h1>
+                <form class="text-center">
+                  <div class="mb-3">
+                    <label for="inputUsername" class="form-label">User name</label>
+                    <input type="text" class="form-control" id="inputUsername" aria-describedby="usernameHelp" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="inputPassword" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="inputPassword" required>
+                  </div>
+                  <br>
+                  <a class="btn btn-primary btn-lg" href="{% url 'production_counter' %}">Log-in</a>
+                </form>
+                <br>
+                {% comment %} <p class="col-md-12 fs-6 mt-10"> Si aún no tienes una cuenta, contacta a IT</p> {% endcomment %}
+              </div>
+            </div>
+          </div>
+          
+        
+        </main>
+      
+      <script src="" async defer></script>
+    </body>
+</html>
+
+
+
+
+
